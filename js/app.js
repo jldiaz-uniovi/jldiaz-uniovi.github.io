@@ -51,13 +51,15 @@ function selectFile($input, files, filename){
     var btn = $("#fileform .btn");
     btn.each(function(index) {
         $(this).on("click", function(e) {
-            $("#instructionsMessage").show();
-        });        
+            if (files && files.length > 0) {
+                $("#instructionsMessage").show();
+            }
+        });
         $(this).removeClass("btn-primary");
         this.previousText = this.textContent;
         this.textContent = "Espera un momento...";
     });
-    
+
     if(!files || files.length == 0){
         return;
     }
